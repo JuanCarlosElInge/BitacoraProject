@@ -20,7 +20,7 @@
                     <con1:wsCallout>
                         <con2:id>_ActionId-N3f57c7ff.N64b65349.0.1722be27500.N7f31</con2:id>
                         <con1:service ref="AUT_BITACORA/BITACORA/Service/Composition/RestBitacora" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
-                        <con1:operation>getAllBitacora</con1:operation>
+                        <con1:operation>getBitacora</con1:operation>
                         <con1:request>
                             <con1:payload wrapped="true">body</con1:payload>
                         </con1:request>
@@ -79,11 +79,12 @@
         <con:pipeline type="response" name="response-N3f57c7ff.N64b65349.0.1722be27500.N7ef4">
             <con:stage id="_StageId-N3f57c7ff.N64b65349.0.1722be27500.N7ef2" name="StageChangeBitacora">
                 <con:context>
+                    <con2:userNsDecl prefix="v11" namespace="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/"/>
                     <con2:userNsDecl prefix="v1" namespace="http://spsolutions.com.mx/core/commonTypes/v1/"/>
                 </con:context>
                 <con:actions>
                     <con1:replace varName="body" contents-only="true">
-                        <con2:id>_ActionId-N3f57c7ff.N64b65349.0.1722be27500.N7e80</con2:id>
+                        <con2:id>_ActionId-N3f57c7ff.5aea2e48.0.1722e3d1754.N7ece</con2:id>
                         <con1:location>
                             <con2:xpathText>.</con2:xpathText>
                         </con1:location>
@@ -92,7 +93,7 @@
                                 <con2:resource ref="AUT_BITACORA/BITACORA/Resources/XSLT/OUT_putBitacora"/>
                                 <con2:input>$body/*[1]</con2:input>
                                 <con2:param name="UUID">
-                                    <con2:path>$header/v1:header/v1:transactionId/text()</con2:path>
+                                    <con2:path>$uuid</con2:path>
                                 </con2:param>
                             </con2:xsltTransform>
                         </con1:expr>
@@ -142,6 +143,16 @@
                             <con1:payload wrapped="true">body</con1:payload>
                         </con1:response>
                         <con1:requestTransform>
+                            <con1:transport-headers>
+                                <con2:id>_ActionId-N3f57c7ff.5aea2e48.0.1722e3d1754.N7f9c</con2:id>
+                                <con1:header-set>outbound-request</con1:header-set>
+                                <con1:header value="expression" name="Content-Type">
+                                    <con2:xqueryText>"application/json"</con2:xqueryText>
+                                </con1:header>
+                                <con1:header value="expression" name="Accept">
+                                    <con2:xqueryText>"application/json"</con2:xqueryText>
+                                </con1:header>
+                            </con1:transport-headers>
                             <con1:nxsdTranslation>
                                 <con2:id>_ActionId-N3f57c7ff.13a9c361.0.1722d67c3f3.N7ec5</con2:id>
                                 <con1:type>XML-To-Native</con1:type>
@@ -222,6 +233,7 @@
                             </con:pipeline-node>
                             <con:route-node name="RouteNode1">
                                 <con:context>
+                                    <con2:userNsDecl prefix="v11" namespace="http://spsolutions.com.mx/core/commonTypes/v1/"/>
                                     <con2:userNsDecl prefix="v1" namespace="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/"/>
                                 </con:context>
                                 <con:actions>
@@ -230,10 +242,46 @@
                                         <con3:service ref="AUT_BITACORA/BITACORA/Service/Composition/RestBitacora" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                                         <con3:operation>putBitacora</con3:operation>
                                         <con3:outboundTransform>
+                                            <con1:assign varName="uuid">
+                                                <con2:id>_ActionId-N3f57c7ff.5aea2e48.0.1722e3d1754.N7e2a</con2:id>
+                                                <con1:expr>
+                                                    <con2:xqueryText>$header/v11:header/v11:transactionId/text()</con2:xqueryText>
+                                                </con1:expr>
+                                            </con1:assign>
+                                            <con1:assign varName="uri">
+                                                <con2:id>_ActionId-N3f57c7ff.5aea2e48.0.1722e3d1754.N7e2d</con2:id>
+                                                <con1:expr>
+                                                    <con2:xqueryText>concat("http://localhost:8090/bitacora/",$body/v1:changeBitacoraRequest/v1:id/text())</con2:xqueryText>
+                                                </con1:expr>
+                                            </con1:assign>
+                                            <con1:transport-headers copy-all="true">
+                                                <con2:id>_ActionId-N3f57c7ff.5aea2e48.0.1722e3d1754.N7f02</con2:id>
+                                                <con1:header-set>outbound-request</con1:header-set>
+                                                <con1:header value="expression" name="Content-Type">
+                                                    <con2:xqueryText>"application/json"</con2:xqueryText>
+                                                </con1:header>
+                                                <con1:header value="expression" name="Accept">
+                                                    <con2:xqueryText>"application/json"</con2:xqueryText>
+                                                </con1:header>
+                                            </con1:transport-headers>
+                                            <con1:nxsdTranslation>
+                                                <con2:id>_ActionId-N3f57c7ff.5aea2e48.0.1722e3d1754.N7f36</con2:id>
+                                                <con1:type>XML-To-Native</con1:type>
+                                                <con1:sourceExpr>
+                                                    <con2:xqueryText><![CDATA[<Root-Element 	xmlns="http://TargetNamespace.com/ServiceName">	
+	<attributes>
+	  <actividad>{$body/v1:changeBitacoraRequest/v1:actividad/text()}</actividad>	
+	</attributes>	
+</Root-Element>]]></con2:xqueryText>
+                                                </con1:sourceExpr>
+                                                <con1:nxsd ref="AUT_BITACORA/BITACORA/Resources/XSD/putBitacoraRequest"/>
+                                                <con1:schemaElement xmlns:ser="http://TargetNamespace.com/ServiceName">ser:Root-Element</con1:schemaElement>
+                                                <con1:replace-body-content/>
+                                            </con1:nxsdTranslation>
                                             <con1:routing-options>
                                                 <con2:id>_ActionId-N3f57c7ff.N64b65349.0.1722be27500.N7ee8</con2:id>
                                                 <con1:uriExpr>
-                                                    <con2:xqueryText>concat("http://localhost:8090/bitacora/ScIpKXIBTyXBrAh40Qhr","")</con2:xqueryText>
+                                                    <con2:xqueryText>$uri</con2:xqueryText>
                                                 </con1:uriExpr>
                                                 <con1:qualityOfService>best-effort</con1:qualityOfService>
                                                 <con1:restOptions>
@@ -279,7 +327,7 @@
                                             <con1:routing-options>
                                                 <con2:id>_ActionId-N3f57c7ff.N64b65349.0.1722be27500.N7cc9</con2:id>
                                                 <con1:uriExpr>
-                                                    <con2:xqueryText>concat("http://localhost:8090/bitacora/",$body/v1:changeBitacoraRequest/v1:id/text())</con2:xqueryText>
+                                                    <con2:xqueryText>concat("http://localhost:8090/bitacora/",$body/v1:deleteBitacoraRequest/v1:id/text())</con2:xqueryText>
                                                 </con1:uriExpr>
                                                 <con1:qualityOfService>best-effort</con1:qualityOfService>
                                                 <con1:restOptions/>

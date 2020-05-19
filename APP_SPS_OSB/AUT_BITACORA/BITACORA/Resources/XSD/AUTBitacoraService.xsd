@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/"
-            xmlns:tns="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/"
-            xmlns:ns0="http://xmlns.erpsol.com/core/esb/con/erpCloud/BitacoraManager/v1/"
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java"
-            xmlns:sdoXML="commonj.sdo/xml" xmlns:con="http://spsolutions.com.mx/core/commonTypes/v1/">
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/" xmlns:tns="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/" xmlns:ns0="http://xmlns.erpsol.com/core/esb/con/erpCloud/BitacoraManager/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:con="http://spsolutions.com.mx/core/commonTypes/v1/">
   <xsd:import namespace="http://spsolutions.com.mx/core/commonTypes/v1/" schemaLocation="commonTypes_v1.xsd"/>
   <xsd:element name="findBitacoraRequest" type="tns:findBitacoraRequestType"/>
   <xsd:element name="findBitacoraResponse" type="tns:findBitacoraResponseResponseType"/>
@@ -69,7 +64,7 @@
       <xsd:element name="usuario" type="xsd:string"/>
       <xsd:element name="idRegla" type="xsd:string"/>
       <xsd:element name="actividad" type="xsd:string"/>
-      <xsd:element name="fechaIns" type="xsd:string"/>
+      <xsd:element name="fechaIns" type="xsd:dateTime"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>

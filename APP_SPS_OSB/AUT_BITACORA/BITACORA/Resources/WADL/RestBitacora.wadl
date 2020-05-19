@@ -3,47 +3,17 @@
    <doc title="RestBitacora">RestReference</doc>
    <resources>
       <resource path="/">
-         <method name="GET" soa:name="getAllBitacora">
+         <method name="GET" soa:name="getBitacora">
             <request/>
             <response>
-               <representation mediaType="application/json"/>             
-            </response>
-            <response>
-               <representation mediaType="application/json"/>
-            </response>
-         </method>
-         <method name="POST" soa:name="postBitacora">
-            <doc title="POST postBitacora">agrega un nuevo registro</doc>
-            <request>
-               <representation mediaType="application/json"/>
-            </request>
-            <response>
                <representation mediaType="application/json"/>
             </response>
             <response>
                <representation mediaType="application/json"/>
             </response>
          </method>
-      </resource>
-      <resource path="/{params}">
-         <method name="GET" soa:name="getBitacora">
-            <doc title="GET getBitacora">consulta por parametros</doc>
-            <request>
-               <param name="params" style="template" type="xsd:string"/>
-            </request>
-            <response>
-               <representation mediaType="application/json"/>
-            </response>
-            <response>
-               <representation mediaType="application/json"/>
-            </response>
-         </method>
-      </resource>
-      <resource path="/{id}">
          <method name="PUT" soa:name="putBitacora">
-            <doc title="PUT putBitacora">actualiza un registro de la bitacora</doc>
             <request>
-               <param name="id" style="template" type="xsd:string"/>
                <representation mediaType="application/json"/>
             </request>
             <response>
@@ -54,8 +24,17 @@
             </response>
          </method>
          <method name="DELETE" soa:name="deleteBitacora">
+            <request/>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+         </method>
+         <method name="POST" soa:name="postBitacora">
             <request>
-               <param name="id" style="template" type="xsd:string"/>
+               <representation mediaType="application/json"/>
             </request>
             <response>
                <representation mediaType="application/json"/>
