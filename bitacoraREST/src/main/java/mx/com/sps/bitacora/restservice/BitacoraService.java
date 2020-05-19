@@ -35,7 +35,7 @@ public String getAllBitacora() {
             strResponse =EntityUtils.toString(response.getEntity());           
         } catch (ResponseException e) {        	
        	 e.printStackTrace();  
-       	 strResponse= "{"+e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
+       	 strResponse= e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
        	 return strResponse;
 	  }catch (IOException e) {
            e.printStackTrace();
@@ -59,7 +59,7 @@ public String getAllBitacora() {
             strResponse =EntityUtils.toString(response.getEntity());         
         } catch (ResponseException e) {        	
           	 e.printStackTrace();  
-          	 strResponse= "{"+e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
+          	strResponse= e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
           	 return strResponse;
    	  }catch (IOException e) {
               e.printStackTrace();
@@ -87,7 +87,7 @@ public String getAllBitacora() {
             strResponse =EntityUtils.toString(response.getEntity());          
         } catch (ResponseException e) {        	
           	 e.printStackTrace();  
-          	 strResponse= "{"+e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
+          	 strResponse= e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
           	 return strResponse;
    	  }catch (IOException e) {
               e.printStackTrace();
@@ -115,7 +115,7 @@ public String getAllBitacora() {
             strResponse =EntityUtils.toString(response.getEntity());          
             } catch (ResponseException e) {        	
               	 e.printStackTrace();  
-              	 strResponse= "{"+e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
+              	 strResponse= e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length());  
               	 return strResponse;
        	  }catch (IOException e) {
                   e.printStackTrace();
@@ -139,7 +139,7 @@ public String getAllBitacora() {
             strResponse =EntityUtils.toString(response.getEntity());          
             } catch (ResponseException e) {        	
               	 e.printStackTrace();  
-              	 strResponse= "{"+e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
+                 strResponse= e.getMessage().substring(e.getMessage().indexOf("{"),e.getMessage().length()); 
               	 return strResponse;
        	  }catch (IOException e) {
                   e.printStackTrace();

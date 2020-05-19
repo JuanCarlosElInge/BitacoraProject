@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://TargetNamespace.com/ServiceName" targetNamespace="http://TargetNamespace.com/ServiceName" elementFormDefault="qualified" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:encoding="UTF-8">
+   <xsd:element name="Root-Element">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="_index" type="xsd:string"/>
+            <xsd:element name="_type" type="xsd:string"/>
+            <xsd:element name="_id" type="xsd:string"/>
+            <xsd:element name="_version" type="xsd:integer"/>
+            <xsd:element name="result" type="xsd:string"/>
+            <xsd:element name="_shards">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="total" type="xsd:integer"/>
+                     <xsd:element name="successful" type="xsd:integer"/>
+                     <xsd:element name="failed" type="xsd:integer"/>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="_seq_no" type="xsd:integer"/>
+            <xsd:element name="_primary_term" type="xsd:integer"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+<xsd:annotation xmlns="">
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+</xsd:schema>

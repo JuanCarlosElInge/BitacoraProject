@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/"
+            xmlns:tns="http://xmlns.spsolutions.com.mx/aut/BitacoraServices/v1/"
+            xmlns:ns0="http://xmlns.erpsol.com/core/esb/con/erpCloud/BitacoraManager/v1/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java"
+            xmlns:sdoXML="commonj.sdo/xml" xmlns:con="http://spsolutions.com.mx/core/commonTypes/v1/">
+  <xsd:import namespace="http://spsolutions.com.mx/core/commonTypes/v1/" schemaLocation="commonTypes_v1.xsd"/>
+  <xsd:element name="findBitacoraRequest" type="tns:findBitacoraRequestType"/>
+  <xsd:element name="findBitacoraResponse" type="tns:findBitacoraResponseResponseType"/>
+  <xsd:element name="createBitacoraRequest" type="tns:createBitacoraRequestType"/>
+  <xsd:element name="createBitacoraResponse" type="tns:createBitacoraResponseType"/>
+  <xsd:element name="changeBitacoraRequest" type="tns:changeBitacoraRequestType"/>
+  <xsd:element name="changeBitacoraResponse" type="tns:changeBitacoraResponseType"/>
+  <xsd:element name="deleteBitacoraRequest" type="tns:deleteBitacoraRequestType"/>
+  <xsd:element name="deleteBitacoraResponse" type="tns:deleteBitacoraResponseType"/>
+  <xsd:element name="Bitacora" type="tns:BitacoraType"/>
+  <xsd:complexType name="findBitacoraRequestType">
+    <xsd:sequence>
+      <xsd:element name="usuario" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="findBitacoraResponseResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="listBitacora" type="tns:BitacoraType"/>
+      <xsd:element ref="con:detailsResponse"/>
+      <xsd:element ref="con:fault"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="createBitacoraRequestType">
+    <xsd:sequence>
+      <xsd:element ref="tns:Bitacora"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="createBitacoraResponseType">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element name="result" type="xsd:string"/>
+      <xsd:element ref="con:detailsResponse"/>
+      <xsd:element ref="con:fault"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="changeBitacoraRequestType">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element name="actividad" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="changeBitacoraResponseType">
+    <xsd:sequence>
+      <xsd:element name="result" type="xsd:string"/>
+      <xsd:element ref="con:detailsResponse"/>
+      <xsd:element ref="con:fault"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="deleteBitacoraRequestType">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="deleteBitacoraResponseType">
+    <xsd:sequence>
+      <xsd:element name="result" type="xsd:string"/>
+      <xsd:element ref="con:detailsResponse"/>
+      <xsd:element ref="con:fault"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BitacoraType">
+    <xsd:sequence>
+      <xsd:element name="usuario" type="xsd:string"/>
+      <xsd:element name="idRegla" type="xsd:string"/>
+      <xsd:element name="actividad" type="xsd:string"/>
+      <xsd:element name="fechaIns" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

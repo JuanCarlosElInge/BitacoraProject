@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="RestBitacora">RestReference</doc>
+   <resources>
+      <resource path="/">
+         <method name="GET" soa:name="getAllBitacora">
+            <request/>
+            <response>
+               <representation mediaType="application/json"/>             
+            </response>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+         </method>
+         <method name="POST" soa:name="postBitacora">
+            <doc title="POST postBitacora">agrega un nuevo registro</doc>
+            <request>
+               <representation mediaType="application/json"/>
+            </request>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/{params}">
+         <method name="GET" soa:name="getBitacora">
+            <doc title="GET getBitacora">consulta por parametros</doc>
+            <request>
+               <param name="params" style="template" type="xsd:string"/>
+            </request>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/{id}">
+         <method name="PUT" soa:name="putBitacora">
+            <doc title="PUT putBitacora">actualiza un registro de la bitacora</doc>
+            <request>
+               <param name="id" style="template" type="xsd:string"/>
+               <representation mediaType="application/json"/>
+            </request>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+         </method>
+         <method name="DELETE" soa:name="deleteBitacora">
+            <request>
+               <param name="id" style="template" type="xsd:string"/>
+            </request>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+            <response>
+               <representation mediaType="application/json"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>
